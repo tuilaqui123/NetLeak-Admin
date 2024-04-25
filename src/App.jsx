@@ -14,14 +14,22 @@ import AddDirector from './pages/Director/AddDirector'
 import AddMovie from './pages/Movie/AddMovie'
 import MovieDetail from './pages/Movie/MovieDetail'
 import UploadMovie from './pages/Movie/UploadMovie'
+import { useState } from 'react'
 
 function App() {
 
+  const [navSlide, setNavSlide] = useState(true)
+  console.log(navSlide)
   return (
-    <div>
+    <div className='bg-[#67718a]"'>
       <BrowserRouter>
-        <Navbar />
-        <PageLayout>
+        <Navbar
+          navSlide={navSlide}
+        />
+        <PageLayout
+          navSlide={navSlide}
+          onclick={() => setNavSlide(!navSlide)}
+        >
           <Routes>
             <Route>
               <Route path="/" element={<Dashboard />} />

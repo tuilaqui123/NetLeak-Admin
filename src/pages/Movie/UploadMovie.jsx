@@ -33,12 +33,12 @@ const UploadMovie = () => {
         <div className="w-full h-auto flex flex-col items-center justify-center gap-5 px-5 pb-10 mb-10 ">
             <div className="w-full flex flex-row items-start gap-5">
                 <div className="w-1/4 flex flex-col items-center gap-10">
-                    <div className="w-full h-50px border border-black flex items-center justify-center py-2 rounded-xl">
-                        <div>
+                    <div className="w-full h-[50px] border cursor-pointer flex items-center justify-center py-2 rounded-xl bg-[#101A33] hover:bg-[#0A3379] duration-200">
+                        <div className="w-auto">
                             <input type="file" name="upload_imgs[]" id="upload-img" hidden onChange={handleImageChange} />
-                            <label htmlFor="upload-img" className="w-full flex flex-row items-center gap-2 mt-2 cursor-pointer">
-                                <i className="fa-solid fa-video text-[#3e3e3e] text-xl"></i>
-                                <p className="text-[#3e3e3e] font-medium">Thêm phim</p>
+                            <label htmlFor="upload-img" className="w-full flex flex-row items-center gap-2 cursor-pointer">
+                                <i className="fa-solid fa-video text-white text-xl"></i>
+                                <p className="text-white font-medium">Thêm phim</p>
                             </label>
                         </div>
                     </div>
@@ -51,7 +51,7 @@ const UploadMovie = () => {
                         ))}
                     </div>
                 </div>
-                <div className="w-3/4">
+                <div className="w-3/4 bg-white rounded-xl p-5">
                     <p className="text-4xl font-bold mb-10">Thông tin tập phim</p>
 
                     <div className="flex flex-col gap-5">

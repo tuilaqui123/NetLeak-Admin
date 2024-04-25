@@ -70,14 +70,16 @@ const Search = () => {
                 </select>
             </div>
 
-            <div className='flex flex-row items-start gap-3'>
-                <p className=' font-bold text-lg'>Tìm kiếm: </p>
-                <div className='w-[80%] flex flex-row flex-wrap gap-2'>
-                    <SearchTag />
-                    <SearchTag />
-                    <SearchTag />
-                    <SearchTag />
-                    <SearchTag />
+            <div className='flex flex-row items-start justify-between'>
+                <div className='flex flex-row gap-3 w-auto'>
+                    <p className='w-auto font-bold text-lg'>Tìm kiếm: </p>
+                    <div className='w-auto flex flex-row flex-wrap gap-2'>
+                        <SearchTag />
+                        <SearchTag />
+                        <SearchTag />
+                        <SearchTag />
+                        <SearchTag />
+                    </div>
                 </div>
                 <button className='border border-[#3e3e3e] py-1 px-4 rounded-lg hover:bg-[#0A3379] duration-150 group'>
                     <p className='font-medium group-hover:text-white duration-150'>Reset</p>

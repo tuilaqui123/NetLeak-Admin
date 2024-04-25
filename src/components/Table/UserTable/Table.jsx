@@ -2,7 +2,7 @@ import React from "react";
 
 const Table = () => {
     return (
-        <section class="w-full antialiased  text-gray-600 px-4">
+        <section class="w-full antialiased  text-gray-600 rounded-xl overflow-hidden">
             <div class="flex flex-col justify-center h-full">
                 <div class="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
                     <header class="px-5 py-4 border-b border-gray-100">

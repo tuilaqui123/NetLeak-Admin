@@ -1,118 +1,105 @@
 import React, { useState } from "react";
 import NavButton from "../Button/NavButton";
 import NavDropButton from "../Button/NavDropButton";
+import logo from '../../assets/N-logo.png'
+import clsx from "clsx";
 
-const Navbar = () => {
+const Navbar = ({ navSlide }) => {
     const [isSelect, setIsSelect] = useState(1)
     return (
-        <div className="w-1/5 h-screen fixed bg-[#101A33]">
-            <div className="h-full w-full">
-                <div className="w-full h-1/5 flex justify-center items-center">
-                    <p className="font-bold text-3xl text-[#fc0303]">NETLEAK</p>
+        <div
+            // className="w-1/4 h-screen fixed p-3 border"
+            className={clsx({
+                "w-1/4 h-screen fixed p-3": navSlide,
+                "w-auto h-screen fixed p-3": !navSlide
+            })}
+        >
+            <div
+                // className="h-full w-full bg-[#101A33] rounded-xl p-3"
+                className={clsx({
+                    "h-full w-full bg-[#101A33] rounded-xl p-3 ": navSlide,
+                    "h-full w-[74px] bg-[#101A33] rounded-xl p-3 duration-200 ease-out": !navSlide
+                })}
+            >
+                <div className="w-full h-1/5 flex justify-center items-center duration-200">
+                    {navSlide ? (
+                        <p className="font-bold text-3xl text-[#fc0303]">NETLEAK</p>
+                    ) : (
+                        <img
+                            src={logo}
+                            className="w-[50px] h-[50px]"
+                        />
+                    )}
                 </div>
-                <ul className="w-full h-3/5 flex flex-col gap-2 ">
+                <ul
+                    // className="w-[100px] h-3/5 flex flex-col gap-2 "
+                    className={clsx({
+                        "w-full h-3/5 flex flex-col gap-2 ": navSlide,
+                        "w-[50px] h-3/5 flex flex-col gap-2 ": !navSlide
+                    })}
+                >
                     <NavButton
                         text={"Thống kê"}
                         icon={"fa-solid fa-chart-simple"}
-                        isDropDown={false}
                         path={"/thong-ke"}
                         isSelect={isSelect}
                         position={1}
                         onclick={() => setIsSelect(1)}
+                        navSlide={navSlide}
                     />
                     <NavButton
                         text={"Quản lý người dùng"}
                         icon={"fa-solid fa-user"}
-                        isDropDown={true}
                         path={"/nguoi-dung"}
                         isSelect={isSelect}
                         position={2}
                         onclick={() => setIsSelect(2)}
+                        navSlide={navSlide}
                     />
 
                     <NavButton
                         text={"Quản lý phim"}
                         icon={"fa-solid fa-film"}
-                        isDropDown={true}
                         path={"/phim"}
                         isSelect={isSelect}
                         position={3}
                         onclick={() => setIsSelect(3)}
-                    >
-                        <div>
-                            <NavDropButton
-                                name={"Danh sách phim"}
-                                path={"/phim"}
-                            />
-                            <NavDropButton
-                                name={"Thêm phim"}
-                                path={"/them-phim"}
-                            />
-                        </div>
-                    </NavButton>
+                        navSlide={navSlide}
+                    />
+
 
                     <NavButton
                         text={"Quản lý thể loại"}
                         icon={"fa-solid fa-list"}
-                        isDropDown={true}
                         path={"/the-loai"}
                         isSelect={isSelect}
                         position={4}
                         onclick={() => setIsSelect(4)}
-                    >
-                        <div>
-                            <NavDropButton
-                                name={"Danh sách thể loại"}
-                                path={"/the-loai"}
-                            />
-                            <NavDropButton
-                                name={"Thêm thể loại"}
-                                path={"/them-the-loai"}
-                            />
-                        </div>
-                    </NavButton>
+                        navSlide={navSlide}
+                    />
+
 
                     <NavButton
                         text={"Quản lý diễn viên"}
                         icon={"fa-solid fa-star"}
-                        isDropDown={true}
                         path={"/dien-vien"}
                         isSelect={isSelect}
                         position={5}
                         onclick={() => setIsSelect(5)}
-                    >
-                        <div>
-                            <NavDropButton
-                                name={"Danh sách diễn viên"}
-                                path={"/dien-vien"}
-                            />
-                            <NavDropButton
-                                name={"Thêm diễn viên"}
-                                path={"/them-dien-vien"}
-                            />
-                        </div>
-                    </NavButton>
+                        navSlide={navSlide}
+                    />
+
 
                     <NavButton
                         text={"Quản lý đội ngũ"}
                         icon={"fa-solid fa-video "}
-                        isDropDown={true}
                         path={"/doi-ngu"}
                         isSelect={isSelect}
                         position={6}
                         onclick={() => setIsSelect(6)}
-                    >
-                        <div>
-                            <NavDropButton
-                                name={"Danh sách đội ngũ"}
-                                path={"/doi-ngu"}
-                            />
-                            <NavDropButton
-                                name={"Thêm đội ngũ"}
-                                path={"/them-doi-ngu"}
-                            />
-                        </div>
-                    </NavButton>
+                        navSlide={navSlide}
+                    />
+
                 </ul>
             </div>
         </div>
