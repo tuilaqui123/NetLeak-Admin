@@ -1,4 +1,3 @@
-import React from "react";
 import StatusBar from "../components/Navbar/StatusBar";
 import clsx from "clsx";
 import '../hiddenScroll.css'

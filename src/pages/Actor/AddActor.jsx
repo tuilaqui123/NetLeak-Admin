@@ -1,7 +1,27 @@
-import React, { useState } from "react";
+import  { useState } from "react";
+import axios from "axios";
 
 const AddActor = () => {
     const [images, setImages] = useState([]);
+    const [inputText, setInputText] = useState([]);
+
+    const handleAdd = () => {
+        // fetch('http://localhost:8081/v1/api/admin/casts',{
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'multipart/form-data'},
+        //     body: JSON.stringify({
+        //         "name": inputText ,
+        //         "avatar": images,
+        //     })
+        // })
+        console.log(images)
+
+        // axios.post('http://localhost:8081/v1/api/admin/casts', {
+        //         "name": inputText ,
+        //         "avatar": images
+        // })
+    }
+
     function handleImageChange(event) {
         const files = event.target.files;
         const imagesArray = [];
@@ -29,6 +49,8 @@ const AddActor = () => {
         <div className="w-full h-auto flex flex-col items-center justify-center gap-5 px-5 pb-5 ">
             <div className="w-full h-full bg-slate-300 rounded-xl flex flex-col items-center py-10 gap-5">
                 <input
+                    value={inputText}
+                    onChange={(e) => {setInputText(e.target.value)}}
                     type='text'
                     placeholder='Tên diễn viên'
                     className="w-3/4 h-[50px] pl-2 rounded-lg border border-[#3e3e3e] focus:ring-[#679cf8] focus:outline-[#679cf8]"
@@ -51,7 +73,7 @@ const AddActor = () => {
                     </div>
                 </div>
                 <button className="border border-[#3e3e3e] h-[50px] px-5 flex items-center justify-center rounded-xl group hover:bg-[#3e3e3e]">
-                    <p className="font-bold text-xl group-hover:text-white">Thêm</p>
+                    <p className="font-bold text-xl group-hover:text-white" onClick={handleAdd}>Thêm</p>
                 </button>
             </div>
         </div>
