@@ -1,6 +1,7 @@
 import  { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddActor = () => {
     const [images, setImages] = useState([]);
@@ -22,7 +23,7 @@ const AddActor = () => {
             }
         );
         if (result.data.avatar){
-            toast('Upload Sucessfully', {
+            toast.success('Upload Successfully', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,

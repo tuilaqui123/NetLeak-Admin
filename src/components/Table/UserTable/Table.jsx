@@ -1,24 +1,8 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext} from "react";
 import { UserContext } from "../../../context/user/userContext";
-import diacritics from 'diacritics';
-
-// Hàm kiểm tra xem một chuỗi có chứa một chuỗi con (có hoặc không có dấu) không
-function stringIncludes(str, substr) {
-    // Loại bỏ dấu từ chuỗi và chuỗi con
-    const strWithoutDiacritics = diacritics.remove(str);
-    const substrWithoutDiacritics = diacritics.remove(substr);
-    // Sử dụng includes() để kiểm tra xem chuỗi có chứa chuỗi con không
-    return strWithoutDiacritics.toLowerCase().includes(substrWithoutDiacritics.toLowerCase());
-}
-
 
 const Table = () => {
-    const {users, searchText} = useContext(UserContext)
-    const [data, setData] = useState(users)
-     
-    // useEffect(() => {
-    //     setData(users.filter(user => user.name === searchText))
-    // }, [searchText])
+    const {users, searchUserText} = useContext(UserContext)
 
     return (
         <section className="w-full antialiased  text-gray-600 rounded-xl overflow-hidden">
@@ -48,7 +32,11 @@ const Table = () => {
                                 </thead>
                                 <tbody className="text-sm divide-y divide-gray-100">
                                     {users.map((ele, index)=> {
-                                        if(ele.name.toLowerCase().trim().includes(searchText.toLowerCase().trim()) || searchText=='')
+                                        if(ele.name.toLowerCase().includes(searchUserText.toLowerCase().trim()) ||
+                                            ele.email.toLowerCase().includes(searchUserText.toLowerCase().trim()) ||
+                                            ele.sexuality.toLowerCase().includes(searchUserText.toLowerCase().trim()) ||
+                                            ele.phone.toLowerCase().includes(searchUserText.toLowerCase().trim()) ||
+                                            searchUserText=='')
                                         return (
                                             <React.Fragment key={index}>
                                                 <tr>

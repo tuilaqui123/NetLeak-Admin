@@ -5,7 +5,7 @@ import { GenreContextProvider } from './context/genre/genreContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <UserContextProvider>
- <GenreContextProvider>
+  <GenreContextProvider>
       <App />
  </GenreContextProvider>  
   </UserContextProvider>

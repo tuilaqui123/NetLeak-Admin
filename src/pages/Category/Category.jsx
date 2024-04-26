@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Table from "../../components/Table/CategoryTable/Table";
 import NormalSearch from "../../components/Search/NormalSearch/NormalSearch";
 import { Link } from "react-router-dom";
 import { genreContext } from "../../context/genre/genreContext";
 
 const Category = () => {
-    
     const {genres} = useContext(genreContext);
     return (
         <div className="w-full h-auto flex flex-col items-center justify-center gap-5">
@@ -20,8 +19,8 @@ const Category = () => {
                 </Link>
             </div>
             {
-                genres?
-                <Table genres={genres}/>:
+                genres.length!=0 ?
+                <Table/> :
                 <div> Loading... </div>
             }
            

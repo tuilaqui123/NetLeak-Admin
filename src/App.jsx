@@ -21,7 +21,7 @@ function App() {
   const [navSlide, setNavSlide] = useState(true)
   console.log(navSlide)
   return (
-    <div className='bg-[#67718a]"'>
+    <div className='bg-[#67718a] '>
       <BrowserRouter>
         <Navbar
           navSlide={navSlide}

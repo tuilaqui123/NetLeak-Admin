@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { genreContext } from "../../../context/genre/genreContext";
 import EditCategory from "../../../pages/Category/EditCategory";
 
-const TableCategory = ({genre}) => {
+const TableCategory = ({genre, index}) => {
     const {deleteGenre} = useContext(genreContext);
     const [showConfirmation, setShowConfirmation]= useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
@@ -13,7 +13,7 @@ const TableCategory = ({genre}) => {
     }
     return (
         <div className="flex flex-row items-center border-b border-[#0A3379] ">
-            <p className="w-3/12 text-center font-bold text-xl">{genre._id}</p>
+            <p className="w-3/12 text-center font-bold text-xl">{index+1}</p>
             <div className="w-7/12 border-x border-[#0A3379] p-5 flex flex-row">
                 <div className="w-full flex flex-col justify-center items-center">
                     <p className=" font-bold text-xl">{genre.title}</p>

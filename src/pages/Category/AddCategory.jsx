@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { genreContext } from "../../context/genre/genreContext";
 
 const AddCategory = () => {
@@ -7,7 +7,6 @@ const AddCategory = () => {
     const [newGenre, setNewGenre] = useState('');
     const handleAdd = ()=>{
         addGenre(newGenre);
-        
     }
     
     return (
