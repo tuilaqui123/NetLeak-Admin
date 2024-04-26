@@ -6,7 +6,7 @@ import { UserContext } from '../../../context/user/userContext';
 const ImageBox = ({ele, type}) => {
 
     const [showConfirmation, setShowConfirmation]= useState(false);
-    const {fetchCast} = useContext(UserContext)
+    const {fetchCast, fetchStudio} = useContext(UserContext)
     const deleteCast= ()=>{
     axios.delete(`http://localhost:8081/v1/api/admin/casts?id=${ele._id}&imageUrl=${ele.avatar}`)
    .then((res) => {
@@ -21,7 +21,7 @@ const deleteStudio= ()=>{
    .then((res) => {
     console.log(res.data);
    
-    //fetchStudio();
+    fetchStudio();
    })
    .catch((err) => console.log(err));
    
