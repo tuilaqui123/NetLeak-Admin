@@ -3,7 +3,7 @@ import ImageBox from "./ImageBox";
 import { UserContext } from "../../../context/user/userContext";
 
 
-const Table = ({data}) => {
+const Table = ({data, type}) => {
    const {searchUserText} = useContext(UserContext);
 
     return (
@@ -12,7 +12,7 @@ const Table = ({data}) => {
                 data.map((ele, index) =>{
                     if(ele.name.toLowerCase().includes(searchUserText.toLowerCase().trim()) || searchUserText == '')
                     return(
-                         <ImageBox key={index} ele= {ele}/>
+                         <ImageBox key={index} ele= {ele} type={type}/>
                     );
                  
                 })

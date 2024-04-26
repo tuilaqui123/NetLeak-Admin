@@ -19,7 +19,7 @@ const Actor = () => {
                 </Link>
             </div>
             {
-                casts? <Table  data={casts}/> :<div>Loading... </div>
+                casts? <Table  data={casts} type="cast"/> :<div>Loading... </div>
             }
            
         </div>
