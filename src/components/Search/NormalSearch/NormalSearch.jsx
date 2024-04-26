@@ -1,12 +1,17 @@
-import { useContext, useRef, useState, } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../../context/user/userContext";
 
-const NormalSearch = ({users}) => {
+const NormalSearch = () => {
     const [inputText,setInputText] = useState('')
     const {searchText, setSearchText}=useContext(UserContext)
 
     const handleClick = () => {
         setSearchText(inputText)
+    }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            setSearchText(inputText)
+        }
     }
     return (
         <div className="w-full flex flex-row justify-between">
@@ -17,6 +22,7 @@ const NormalSearch = ({users}) => {
                     type='text'
                     placeholder='Tìm kiếm...'
                     className="w-full h-[50px] pl-2 rounded-lg border border-[#3e3e3e] focus:ring-[#679cf8] focus:outline-[#679cf8]"
+                    onKeyDown={handleKeyDown}
                 />
                 <i className="absolute right-2 fa-solid fa-magnifying-glass"></i>
             </div>  

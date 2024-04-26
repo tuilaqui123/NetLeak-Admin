@@ -1,9 +1,11 @@
-import React from "react";
+import { useContext } from "react";
 import Table from "../../components/Table/CategoryTable/Table";
 import NormalSearch from "../../components/Search/NormalSearch/NormalSearch";
 import { Link } from "react-router-dom";
+import { genreContext } from "../../context/genre/genreContext";
 
 const Category = () => {
+    const {genres} = useContext(genreContext);
     return (
         <div className="w-full h-auto flex flex-col items-center justify-center gap-5">
             <div className="w-full h-full bg-white rounded-xl flex flex-row items-center justify-between p-2">
@@ -16,7 +18,12 @@ const Category = () => {
                     <p className="font-bold text-white">+ Thêm thể loại</p>
                 </Link>
             </div>
-            <Table />
+            {
+                genres.length!=0 ?
+                <Table/> :
+                <div> Loading... </div>
+            }
+           
         </div>
     );
 }
