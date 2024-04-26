@@ -1,13 +1,15 @@
-import  { useState } from "react";
+import  { useContext, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserContext } from "../../context/user/userContext";
 
 const AddActor = () => {
     const [images, setImages] = useState([]);
     const [allImages, setAllImages] = useState([]);
     const [inputText, setInputText] = useState([]);
-
+    const {fetchCast} = useContext(UserContext)
+   
     const submitImage = async (e) => {
         e.preventDefault();
 
@@ -33,6 +35,8 @@ const AddActor = () => {
                 progress: undefined,
                 theme: "light",
             });
+            fetchCast();
+        
         }else{
             alert("no oke")
         }
