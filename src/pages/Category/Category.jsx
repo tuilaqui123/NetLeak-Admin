@@ -22,7 +22,7 @@ const Category = () => {
             {
                 genres.length!=0 ?
                 <Table/> :
-                <BeatLoader color="#36d7b7" />
+                <BeatLoader className=" flex justify-center" color="#36d7b7" />
             }
            
         </div>
