@@ -1,4 +1,3 @@
-// import Table from "../../components/Table/MovieTable/Table";
 import axios from "axios";
 import { 
     Chart as ChartJS, 
@@ -19,8 +18,6 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-
-
   
 const labels = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'];
 
@@ -29,6 +26,7 @@ const Dashboard = () => {
     const [selectedYear, setSelectedYear] = useState()
     const [yearArr, setYearArr] = useState([])
     const [dataForChart, setDataForChart] = useState([]);
+    const [totalRevenue, setTotalRevenue] = useState(null)
     const data = {
         labels,
         datasets: [
@@ -56,7 +54,7 @@ const Dashboard = () => {
         scales: {
             y: {
                 min: 0,
-                max: 5000,
+                max: totalRevenue ? totalRevenue : 10000,
                 stepSize: 5,
                 title: {
                     display: true,
@@ -73,15 +71,17 @@ const Dashboard = () => {
     };
     const handleChange = (event) => {
         setSelectedYear(event.target.value);
+        console.log(event.target.value)
         const filteredData = monthAndYear.filter((item) => item.year === event.target.value);
         const monthlyRevenue = Array(12).fill(0);
         filteredData.map((item) => {
             const monthIndex = item.month - 1;
             monthlyRevenue[monthIndex] = item.total;
         });
+        const getYearlyRevenue = yearArr.filter((item) => item.year === event.target.value)
+        setTotalRevenue(getYearlyRevenue[0].total)
         setDataForChart(monthlyRevenue);
     };
-    console.log(selectedYear)
     useEffect(() => {
         axios.get("http://localhost:8081/v1/api/admin/revenue")
             .then((res) => {
@@ -98,7 +98,6 @@ const Dashboard = () => {
                 }));
                 setMonthAndYear(monthlyArray)
                 setYearArr(yearlyArray)
-                console.log(yearlyArray)
             })
             .catch((err) => {
                 console.log(err);
@@ -106,7 +105,7 @@ const Dashboard = () => {
     }, [])
     return (
         <div className="w-full h-auto flex flex-col items-center justify-center px-5 pb-5 bg-white rounded pt-5">
-            <form className="mx-auto">
+            <form className="max-w-sm mx-auto">
                 <select id="countries" onChange={handleChange} className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Năm</option>
                     {yearArr.length!=0 && yearArr.map((item, index)=> {
