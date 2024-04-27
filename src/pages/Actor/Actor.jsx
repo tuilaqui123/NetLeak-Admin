@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext, useState } from "react";
 import NormalSearch from "../../components/Search/NormalSearch/NormalSearch";
 import Table from "../../components/Table/ImageTable/Table";
 import { Link } from "react-router-dom";

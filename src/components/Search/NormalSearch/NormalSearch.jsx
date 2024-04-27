@@ -3,13 +3,14 @@ import { useState } from "react";
 
 const NormalSearch = ({setSearchText}) => {
     const [inputText,setInputText] = useState('')
+    const {searchUserText, setSearchUserText}=useContext(UserContext)
 
     const handleClick = () => {
-        setSearchText(inputText)
+        setSearchUserText(inputText)
     }
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            setSearchText(inputText)
+            searchUserText(inputText)
         }
     }
     return (

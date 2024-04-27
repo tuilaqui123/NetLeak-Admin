@@ -73,6 +73,7 @@ const AddActor = () => {
                 imagesArray.push(e.target.result);
                 if (imagesArray.length === files.length) {
                     setAllImages([...allImages, ...imagesArray]);
+                    setAllImages([...allImages, ...imagesArray]);
                 }
             };
 
@@ -82,8 +83,10 @@ const AddActor = () => {
     };
     function handleDeleteImage(index) {
         const newImages = allImages;
+        const newImages = allImages;
         newImages.splice(index, 1);
         setImages(newImages);
+    }
     }
     return (
         <>

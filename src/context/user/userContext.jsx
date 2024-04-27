@@ -8,8 +8,7 @@ export const UserContext = createContext([])
 export const UserContextProvider = ({ children }) => {
   const [users, setUsers] = useState([])
   const [casts, setCasts] = useState([])
-  const [directors, setDirectors] = useState([])
-
+  const [studios, setStudios] = useState([])
   const [searchUserText, setSearchUserText] = useState("")
   const [searchDirectorText, setSearchDirectorText] = useState("")
 
@@ -44,22 +43,24 @@ export const UserContextProvider = ({ children }) => {
         console.log(err)
       })
   }
-
+  const fetchStudio = () => {
+    axios.get("http://localhost:8081/v1/api/admin/studios")
+    .then((res)=>{
+        console.log(res.data)
+        setStudios(res.data)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+  }
   useEffect(() => {
     fetchUser()
     fetchCast()
-    fetchDirector()
+    fetchStudio()
   }, [])
 
   return (
-    <UserContext.Provider value={{
-      users, setUsers,
-      casts, setCasts,
-      directors, setDirectors,
-      searchUserText, setSearchUserText,
-      searchDirectorText, setSearchDirectorText,
-      fetchDirector
-    }}>
+    <UserContext.Provider value={{ users , setUsers, casts, setCasts,studios, setStudios, searchUserText, setSearchUserText, fetchCast, fetchStudio }}>
       {children}
     </UserContext.Provider>
   );

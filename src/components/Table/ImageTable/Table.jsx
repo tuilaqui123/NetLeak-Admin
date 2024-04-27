@@ -1,13 +1,23 @@
+import { useContext } from "react";
 import ImageBox from "./ImageBox";
-// import { useContext } from "react";
-// import { UserContext } from "../../../context/user/userContext";
+import { UserContext } from "../../../context/user/userContext";
 
-const Table = () => {
-    // const { casts , setCasts } = useContext(UserContext)
+
+const Table = ({data, type}) => {
+   const {searchUserText} = useContext(UserContext);
 
     return (
         <div className='w-full h-full grid grid-cols-4 gap-5'>
-            <ImageBox />
+            {data ? (
+                data.map((ele, index) =>{
+                    if(ele.name.toLowerCase().includes(searchUserText.toLowerCase().trim()) || searchUserText == '')
+                    return(
+                         <ImageBox key={index} ele= {ele} type={type}/>
+                    );
+                 
+                })
+            ) : ""}
+            {/* <ImageBox /> */}
         </div>
     );
 }
