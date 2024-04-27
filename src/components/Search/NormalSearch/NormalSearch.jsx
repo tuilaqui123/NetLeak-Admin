@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../../../context/user/userContext";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 
-const NormalSearch = () => {
+const NormalSearch = ({setSearchText}) => {
     const [inputText,setInputText] = useState('')
-    const {searchText, setSearchText}=useContext(UserContext)
 
     const handleClick = () => {
         setSearchText(inputText)

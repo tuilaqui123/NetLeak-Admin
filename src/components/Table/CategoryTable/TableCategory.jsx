@@ -17,7 +17,7 @@ const TableCategory = ({genre, index}) => {
             <p className="w-3/12 text-center font-bold text-xl">{index+1}</p>
             <div className="w-7/12 border-x border-[#0A3379] p-5 flex flex-row">
                 <div className="w-full flex flex-col justify-center items-center">
-                    <p className=" font-bold text-xl">{genre.title}</p>
+                    <p className=" font-bold text-xl capitalize">{genre.title}</p>
                 </div>
             </div>
             <div className='w-1/12 flex items-center justify-center'>

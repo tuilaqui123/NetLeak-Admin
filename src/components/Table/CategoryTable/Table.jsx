@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from "react";
 import TableCategory from "./TableCategory";
-import { UserContext } from "../../../context/user/userContext";
 import { genreContext } from "../../../context/genre/genreContext";
 
 const Table = ( ) => {
-    const { searchUserText }=useContext(UserContext);
-    const { genres } = useContext(genreContext)
+    const { genres, searchGenreText } = useContext(genreContext)
     return (
         <div className="w-full flex justify-center bg-white rounded-t-lg">
         <div className="w-full flex flex-col ">
@@ -19,7 +17,8 @@ const Table = ( ) => {
             </div>
             <div className="w-full flex flex-col border border-b-0 border-[#0A3379]">
             {genres.map((genre, i) => {
-                if( genre.title.toLowerCase().includes(searchUserText.toLowerCase().trim()) || searchUserText == '')
+                console.log(genre)
+                if( genre.title.toLowerCase().includes(searchGenreText.toLowerCase().trim()) || searchGenreText == '')
                 return (
                 <React.Fragment key={i}>
                     <TableCategory genre={genre} index={i} />

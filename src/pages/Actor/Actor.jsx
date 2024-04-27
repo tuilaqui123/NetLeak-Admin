@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import NormalSearch from "../../components/Search/NormalSearch/NormalSearch";
 import Table from "../../components/Table/ImageTable/Table";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/user/userContext";
 
 const Actor = () => {
-
+    const {casts} = useContext(UserContext);
     return (
         <div className="w-full h-auto flex flex-col items-center justify-center gap-5 px-5 pb-5 ">
             <div className="w-full h-full bg-white rounded-xl flex flex-row items-center justify-between p-2">
@@ -16,7 +18,10 @@ const Actor = () => {
                     <p className="font-bold text-white">+ Thêm diễn viên</p>
                 </Link>
             </div>
-            <Table />
+            {
+                casts? <Table  data={casts} type="cast"/> :<div>Loading... </div>
+            }
+           
         </div>
     );
 }

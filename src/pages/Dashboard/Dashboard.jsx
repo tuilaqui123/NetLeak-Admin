@@ -71,7 +71,6 @@ const Dashboard = () => {
     };
     const handleChange = (event) => {
         setSelectedYear(event.target.value);
-        console.log(event.target.value)
         const filteredData = monthAndYear.filter((item) => item.year === event.target.value);
         const monthlyRevenue = Array(12).fill(0);
         filteredData.map((item) => {
@@ -81,6 +80,7 @@ const Dashboard = () => {
         const getYearlyRevenue = yearArr.filter((item) => item.year === event.target.value)
         setTotalRevenue(getYearlyRevenue[0].total)
         setDataForChart(monthlyRevenue);
+        console.log(selectedYear)
     };
     useEffect(() => {
         axios.get("http://localhost:8081/v1/api/admin/revenue")

@@ -1,13 +1,17 @@
-import React from "react";
+import { useContext } from "react"
 import NormalSearch from "../../components/Search/NormalSearch/NormalSearch";
-import Table from "../../components/Table/ImageTable/Table";
+import Table from "../../components/Table/DirectorTable/Table";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/user/userContext";
+import { BeatLoader } from "react-spinners";
 
 const Director = () => {
+    const { directors, setSearchDirectorText } = useContext(UserContext)
+
     return (
         <div className="w-full h-auto flex flex-col items-center justify-center gap-5 px-5 pb-5 ">
-            <div className="w-full h-full bg-white rounded-xl flex flex-row items-center justify-between p-2">
-                <NormalSearch />
+            <div className="w-full bg-white rounded-xl flex flex-row items-center justify-between p-2">
+                <NormalSearch setSearchText={setSearchDirectorText} />
             </div>
             <div className="w-full h-auto flex items-end justify-end">
                 <Link
@@ -16,7 +20,14 @@ const Director = () => {
                     <p className="font-bold text-white">+ Thêm đội ngũ</p>
                 </Link>
             </div>
-            <Table />
+
+            {
+                directors.length != 0 ?
+                    (
+                        <Table />
+                    )
+                    : <BeatLoader color="#36d7b7" />
+            }
         </div>
     );
 }

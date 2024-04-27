@@ -6,6 +6,7 @@ export const genreContext = createContext([]);
 // eslint-disable-next-line react/prop-types
 export const GenreContextProvider = ({ children }) => {
   const [genres, setGenres] = useState([]);
+  const [searchGenreText, setSearchGenreText] = useState("")
   //   const [searchText, setSearchText] = useState("")
   const fetch = () => {
     axios
@@ -58,7 +59,7 @@ export const GenreContextProvider = ({ children }) => {
   .catch((err) => console.log(err));
      }
   return (
-    <genreContext.Provider value={{ genres, setGenres, addGenre, deleteGenre, editGenre }}>
+    <genreContext.Provider value={{ genres, setGenres, searchGenreText, setSearchGenreText, addGenre, deleteGenre, editGenre }}>
       {children}
     </genreContext.Provider>
   );

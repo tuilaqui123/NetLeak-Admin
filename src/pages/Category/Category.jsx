@@ -3,13 +3,14 @@ import Table from "../../components/Table/CategoryTable/Table";
 import NormalSearch from "../../components/Search/NormalSearch/NormalSearch";
 import { Link } from "react-router-dom";
 import { genreContext } from "../../context/genre/genreContext";
+import { BeatLoader } from "react-spinners";
 
 const Category = () => {
-    const {genres} = useContext(genreContext);
+    const {genres, setSearchGenreText} = useContext(genreContext);
     return (
         <div className="w-full h-auto flex flex-col items-center justify-center gap-5">
             <div className="w-full h-full bg-white rounded-xl flex flex-row items-center justify-between p-2">
-                <NormalSearch />
+                <NormalSearch setSearchText={setSearchGenreText}/>
             </div>
             <div className="w-full h-auto flex items-end justify-end">
                 <Link
@@ -21,7 +22,7 @@ const Category = () => {
             {
                 genres.length!=0 ?
                 <Table/> :
-                <div> Loading... </div>
+                <BeatLoader color="#36d7b7" />
             }
            
         </div>
